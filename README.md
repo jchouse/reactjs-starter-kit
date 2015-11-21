@@ -1,5 +1,6 @@
 ### deps ###
 [nodejs v4.2.1 with npm](https://nodejs.org/en/download/)
+
 `npm grunt-cli -g`  
 
 ### some links ###
@@ -15,17 +16,17 @@
 * npm i
 
 ### Build project ###
-* run `grunt` in ./<dir>, `grunt-cli`  must be installed globaly from npm
+* run `grunt` in ./dir, `grunt-cli`  must be installed globaly from npm
 
 ### Live Watch ###
-* run `wwb` in ./<dir>
+* run `wwb` in ./dir
 
 ### Run test ###
-* run `grunt jest` in ./<dir>, or 'jest' with `jest-cli`
+* run `grunt jest` in ./dir, or 'jest' with `jest-cli`
 
 ### JS code style ###
 * JSCS - yandex config
-* ESLint - config in ./<dir>
+* ESLint - config in ./dir
 
 ### Test debug ###
  * Idea

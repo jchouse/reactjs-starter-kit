@@ -6,7 +6,6 @@ import TestUtils from 'react-addons-test-utils';
 
 const Login = require('../Login.jsx');
 const Input = require('blocks/Controls/Input/Input.jsx');
-const PasswordInput = require('blocks/Controls/PasswordInput/PasswordInput.jsx');
 const ixhr = require('blocks/i/ixhr/ixhr.jsx');
 const cookie = require('react-cookie');
 
@@ -51,7 +50,7 @@ describe('Login', () => {
             passwordInput = passwordRow.props.children[1];
 
         expect(passwordRow.props.children[0]).toEqual('Password: ');
-        expect(passwordInput.type).toEqual(<PasswordInput />.type);
+        expect(passwordInput.type).toEqual(<Input />.type);
         expect(passwordInput.props.name).toEqual('password');
     });
 

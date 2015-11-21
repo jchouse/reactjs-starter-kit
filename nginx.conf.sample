@@ -1,14 +1,9 @@
 server {
-    listen       8080;
+    listen       8079;
     server_name  localhost;
 
     location / {
-        root /Users/jchouse/projects/movedin/build;
+        root /Users/jchouse/projects/wsd/build;
         try_files $uri /index.html;
-    }
-
-    location /api/ {
-        proxy_pass http://movedin-edge-dev.elasticbeanstalk.com:19801/api/;
-        proxy_set_header Host $host;
     }
 }

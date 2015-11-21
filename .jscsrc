@@ -75,7 +75,6 @@
     "disallowImplicitTypeConversion": [
         "numeric",
         "boolean",
-        "binary",
         "string"
     ],
     "disallowYodaConditions": true,

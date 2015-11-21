@@ -1,10 +1,9 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import cookie from 'react-cookie';
-import ixhr from 'blocks/i/ixhr/ixhr.jsx';
 import icls from 'blocks/i/icls/icls.jsx';
 import Input from 'blocks/Controls/Input/Input.jsx';
-import Button from 'blocks/Controls/Button/Button.jsx'
+import Button from 'blocks/Controls/Button/Button.jsx';
 
 const blockName = 'Init';
 
@@ -33,7 +32,7 @@ class Init extends React.Component {
 
         console.log(email);
 
-        if ( !re.test(email) ) {
+        if (!re.test(email)) {
             error = (
                 <FormattedMessage
                     id='Registration.wrongEmail'
@@ -83,12 +82,7 @@ class Init extends React.Component {
 
     submitForm (e) {
         e.preventDefault();
-        var error = this.validateEmail(),
-            params = {
-                method: 'POST',
-                url: '/api/users/registration/initUser',
-                body: this.state.formData
-            };
+        var error = this.validateEmail();
 
         if (error) {
             this.setState({
@@ -102,10 +96,10 @@ class Init extends React.Component {
             });
         }
 
-        ixhr.send(params, this.sendedHandler.bind(this), this.sendedHandlerError.bind(this));
+        console.log(this.state.formData);
     }
 
-    render() {
+    render () {
         var {type} = this.props.params,
             {error, successInfo, errorInfo} = this.state,
             rowCls = icls.cls(blockName, 'row'),
