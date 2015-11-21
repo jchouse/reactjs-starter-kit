@@ -1,0 +1,56 @@
+{
+  "name": "movedin",
+  "version": "0.1.0",
+  "devDependencies": {
+    "babel-jest": "5.3.0",
+    "babel-preset-react": "6.1.18",
+    "babel-preset-es2015": "6.1.18",
+    "eslint": "^1.0.0",
+    "eslint-plugin-react": "^3.1.0",
+    "intl": "1.0.1",
+    "jest-cli": "0.7.1",
+    "react-addons-test-utils": "0.14.2",
+    "react": "0.14.2",
+    "react-dom": "0.14.2",
+    "babelify": "6.4.0",
+    "babel-eslint": "^4.0.5",
+    "history": "1.13.0",
+    "react-router": "1.0.0-rc4",
+    "react-intl": "2.0.0-pr-2",
+    "react-cookie": "0.4.1",
+    "react-localstorage": "0.2.8",
+    "react-mixin": "3.0.1",
+    "portals": "0.1.3",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
+    "grunt-csscomb": "3.1.0",
+    "grunt-jest": "0.2.0",
+    "grunt-exec": "0.4.6",
+    "grunt-react": "0.12.3",
+    "grunt-browserify": "4.0.1",
+    "grunt-contrib-concat": "0.5.1",
+    "grunt-contrib-less": "1.0.1",
+    "grunt-contrib-watch": "0.6.1",
+    "country-data": "0.0.23",
+    "rsvp": "3.1.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "node_modules/babel-jest",
+    "rootDir": "./",
+    "collectCoverage": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "unmockedModulePathPatterns": [
+      "node_modules/react",
+      "node_modules/react-dom",
+      "node_modules/react-addons-test-utils",
+      "node_modules/fbjs"
+    ]
+  }
+}
+

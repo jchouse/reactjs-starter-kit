@@ -1,0 +1,68 @@
+.tooltip
+{
+    position: relative;
+
+    &--shown
+    {
+        .tooltip
+        {
+            &__list
+            {
+                display: block;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__list
+    {
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        right: 0;
+        top: 36px;
+        background: #fff;
+        border: 1px solid @fon-3;
+        border-radius: 3px;
+        padding: 3px 0;
+
+        display: none;
+        visibility: hidden;
+        animation-duration: .1s;
+        animation-timing-function: ease-out;
+        -moz-box-shadow: 0px 2px 7px 0px @fon-1;
+        box-shadow: 0px 2px 7px 0px @fon-1;
+        animation-fill-mode: forwards;
+        animation-name: tooltip_popup;
+
+        &-item
+        {
+            padding: 0 10px;
+            line-height: 30px;
+            font-size: @font-size-s;
+            cursor: pointer;
+
+            &:hover
+            {
+                background: @fon-3;
+            }
+        }
+    }
+}
+
+@keyframes tooltip_popup {
+    0%
+    {
+        opacity: 0;
+        margin-top: 0;
+    }
+    50%
+    {
+        margin-top: 10px;
+    }
+    100%
+    {
+        opacity: 1;
+        margin-top: 0;
+    }
+}

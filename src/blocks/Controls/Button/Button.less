@@ -1,0 +1,97 @@
+.button
+{
+    position: relative;
+    z-index: 1;
+
+    overflow: hidden;
+
+    min-width: 128px;
+    padding: 12px 0 10px;
+
+    cursor: pointer;
+
+    border: 1px solid;
+    border-radius: 30px;
+    outline: none;
+
+    &__wrapper
+    {
+        display: inline-block;
+        overflow: hidden;
+
+        transform: translateZ(0);
+
+        border-radius: 30px;
+    }
+
+    &__text
+    {
+        position: relative;
+        z-index: 2;
+
+        background: transparent;
+
+        font: @font-size-l/@font-size-l @font;
+    }
+
+    &--default
+    {
+        border-color: @brand-accent-3;
+        background: @brand-accent-3;
+        .button__animate
+        {
+            background: #fbb700;
+        }
+    }
+
+    &--reject
+    {
+        border-color: @brand-accent-1;
+        background: transparent;
+        .button__animate
+        {
+            background: @brand-accent-1;
+        }
+    }
+
+    &--disabled
+    {
+        cursor: default;
+
+        border-color: @fon-3;
+        background: @fon-3;
+
+        .button__text
+        {
+            color: @text-3;
+        }
+    }
+
+    &__animate
+    {
+        position: absolute;
+        z-index: 1;
+
+        width: 10px;
+        height: 10px;
+
+        transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        transition-duration: 550ms;
+        transition-property: transform;
+        transform: scale(0);
+
+        opacity: 0;
+        border-radius: 50%;
+        background: #fbb700;
+    }
+
+    &--animate
+    {
+        .button__animate
+        {
+            transform: scale(40);
+
+            opacity: 1;
+        }
+    }
+}
