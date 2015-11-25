@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import icls from 'blocks/i/icls/icls.jsx';
 
+const blockName = 'button';
+
 /**
  * Button
  *
@@ -25,7 +27,7 @@ class Button extends React.Component {
                 top: 0,
                 left: 0
             }
-        }
+        };
     }
 
     animate (event) {
@@ -61,15 +63,14 @@ class Button extends React.Component {
         }
     }
 
-    render() {
-        var {blockName, mixCls, text, children, option: option = 'default' } = this.props,
+    render () {
+        var {mixCls, text, children, option: option = 'default'} = this.props,
             {animate, left, top} = this.state.animate,
             cls = [blockName, icls.mod(blockName, option)].join(' '),
             attributes = {
                 disabled: this.props.disabled,
                 name: this.props.name
             };
-
 
         if (mixCls) {
             cls = [cls, mixCls].join(' ');
@@ -98,9 +99,7 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-    blockName: React.PropTypes.string,
     text: React.PropTypes.string
 };
-Button.defaultProps = { blockName: 'button' };
 
 export default Button;

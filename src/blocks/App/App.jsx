@@ -23,7 +23,7 @@ class App extends React.Component {
         }
     }
 
-    render(){
+    render () {
         var loggedIn = cookie.load('token'),
             content;
 

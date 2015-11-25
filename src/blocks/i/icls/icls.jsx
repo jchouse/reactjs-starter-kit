@@ -8,7 +8,7 @@ class icls extends React.Component {
      * @param {string} [elem]       - elem name, join with '__'
      * @param {string} [mod]        - mod name, join with '--'
      */
-    static cls(blockName, elem, mod) {
+    static cls (blockName, elem, mod) {
         var that = this,
             str = blockName;
 
@@ -32,7 +32,7 @@ class icls extends React.Component {
      * @param {string} name         - block name
      * @param {string} elem         - elem name, join with '__'
      */
-    static elem(name, elem) {
+    static elem (name, elem) {
         return name + '__' + elem;
     }
 
@@ -42,12 +42,11 @@ class icls extends React.Component {
      * @param {string} name         - block or elem name
      * @param {string} elem         - mod name, join with '--'
      */
-    static mod(name, mod) {
+    static mod (name, mod) {
         return name + '--' + mod;
     }
 
-    render() {
-    }
+    render () {}
 }
 
 export default icls;

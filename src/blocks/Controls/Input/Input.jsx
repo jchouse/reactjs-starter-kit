@@ -85,6 +85,8 @@ class Input extends React.Component {
             cls = [cls, icls.mod(blockName, 'error')].join(' ');
         }
 
+        console.log(this);
+
         return (
             <div className={cls}>
                 <input

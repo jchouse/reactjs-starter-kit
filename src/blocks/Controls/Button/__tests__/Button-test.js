@@ -30,7 +30,7 @@ describe('Button', () => {
         expect(buttonElem.name).toEqual('');
         expect(buttonElem.disabled).toBeFalsy();
 
-        //Text elem
+        // Text elem
         expect(textElem.nodeName).toEqual('SPAN');
         expect(textElem.className).toEqual('button__text');
         expect(textElem.innerHTML).toEqual(text);
