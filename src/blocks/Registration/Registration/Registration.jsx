@@ -2,7 +2,7 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import { Link } from 'react-router';
 import cookie from 'react-cookie';
-import icls from 'blocks/i/icls/icls.jsx';
+import ibem from 'blocks/i/ibem/ibem.jsx';
 import Button from 'blocks/Controls/Button/Button.jsx'
 
 const blockName = 'registration';
@@ -20,7 +20,7 @@ class Registration extends React.Component {
 
     render() {
         var content,
-            rowCls = icls.cls(blockName, 'row');
+            rowCls = ibem.cls(blockName, 'row');
 
         content = (
             <div className={blockName}>

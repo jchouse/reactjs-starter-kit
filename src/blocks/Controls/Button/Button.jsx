@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import icls from 'blocks/i/icls/icls.jsx';
+import ibem from 'blocks/i/ibem/ibem.jsx';
 
 const blockName = 'button';
 
@@ -66,7 +66,7 @@ class Button extends React.Component {
     render () {
         var {mixCls, text, children, option: option = 'default'} = this.props,
             {animate, left, top} = this.state.animate,
-            cls = [blockName, icls.mod(blockName, option)].join(' '),
+            cls = [blockName, ibem.mod(blockName, option)].join(' '),
             attributes = {
                 disabled: this.props.disabled,
                 name: this.props.name
@@ -77,21 +77,21 @@ class Button extends React.Component {
         }
 
         if (attributes.disabled) {
-            cls = [cls, icls.mod(blockName, 'disabled')].join(' ');
+            cls = [cls, ibem.mod(blockName, 'disabled')].join(' ');
         }
 
         if (animate) {
-            cls = [cls, icls.mod(blockName, 'animate')].join(' ');
+            cls = [cls, ibem.mod(blockName, 'animate')].join(' ');
         }
 
         return (
-            <div className={icls.cls(blockName, 'wrapper')}>
+            <div className={ibem.cls(blockName, 'wrapper')}>
                 <button {...attributes} className={cls}
                     onClick={this.clickHandler.bind(this)}
                     onMouseDown={this.animate.bind(this)}>
                     {children}
-                    <span className={icls.cls(blockName, 'text')}>{text}</span>
-                    <i style={{top: top, left: left}} className={icls.cls(blockName, 'animate')}/>
+                    <span className={ibem.cls(blockName, 'text')}>{text}</span>
+                    <i style={{top: top, left: left}} className={ibem.cls(blockName, 'animate')}/>
                 </button>
             </div>
         );

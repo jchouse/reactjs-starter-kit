@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import cookie from 'react-cookie';
-import icls from 'blocks/i/icls/icls.jsx';
+import ibem from 'blocks/i/ibem/ibem.jsx';
 import Input from 'blocks/Controls/Input/Input.jsx';
 import Button from 'blocks/Controls/Button/Button.jsx';
 
@@ -102,7 +102,7 @@ class Init extends React.Component {
     render () {
         var {type} = this.props.params,
             {error, successInfo, errorInfo} = this.state,
-            rowCls = icls.cls(blockName, 'row'),
+            rowCls = ibem.cls(blockName, 'row'),
             errorStr,
             content;
 

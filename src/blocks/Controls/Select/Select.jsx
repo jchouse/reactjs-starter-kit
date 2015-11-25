@@ -1,5 +1,5 @@
 import React from 'react';
-import icls from 'blocks/i/icls/icls.jsx';
+import ibem from 'blocks/i/ibem/ibem.jsx';
 
 const blockName = 'select';
 /**
@@ -68,19 +68,19 @@ class Select extends React.Component {
         };
 
         if (shown) {
-            cls = icls.cls(blockName, null, 'show');
+            cls = ibem.cls(blockName, null, 'show');
         }
 
         return (
             <div className={cls}>
-                <div className={icls.elem(blockName, 'content')}>
-                    <div className={icls.elem(blockName, 'text')} onClick={this.toggleShow.bind(this)}>
+                <div className={ibem.elem(blockName, 'content')}>
+                    <div className={ibem.elem(blockName, 'text')} onClick={this.toggleShow.bind(this)}>
                         {firstElem.text}
-                        <span className={icls.elem(blockName, 'arrow')}>^</span>
+                        <span className={ibem.elem(blockName, 'arrow')}>^</span>
                     </div>
-                    <div className={icls.elem(blockName, 'popup')}>
+                    <div className={ibem.elem(blockName, 'popup')}>
                         <div style={styleList}
-                             className={icls.elem(blockName, 'options')}
+                             className={ibem.elem(blockName, 'options')}
                              onClick={this.selectHandler.bind(this)}>
                             {optionsArr}
                         </div>
@@ -94,10 +94,10 @@ class Select extends React.Component {
         var that = this;
 
         return optionsData.map(function (option, index) {
-            let cls = icls.elem(blockName, 'option-elem');
+            let cls = ibem.elem(blockName, 'option-elem');
 
             if (option.value === that.state.selected) {
-                cls = icls.cls(blockName, 'option-elem', 'selected');
+                cls = ibem.cls(blockName, 'option-elem', 'selected');
             }
 
             return (

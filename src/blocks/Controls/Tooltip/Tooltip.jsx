@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Input from 'blocks/Controls/Input/Input.jsx';
-import icls from 'blocks/i/icls/icls.jsx';
+import ibem from 'blocks/i/ibem/ibem.jsx';
 
 const blockName = 'tooltip';
 /**
@@ -70,7 +70,7 @@ class Tooltip extends React.Component {
             cls = blockName;
 
         if (list.length) {
-            cls = icls.cls(blockName, null, 'shown');
+            cls = ibem.cls(blockName, null, 'shown');
         }
 
         return (
@@ -79,7 +79,7 @@ class Tooltip extends React.Component {
                     ref='Input'
                     defaultValue={defaultValue}
                     changeHandler={this.props.changeHandler}/>
-                <div className={icls.elem(blockName, 'list')}>
+                <div className={ibem.elem(blockName, 'list')}>
                     {this.renderRows(list)}
                 </div>
             </div>
@@ -91,7 +91,7 @@ class Tooltip extends React.Component {
 
         return list.map(function (item, i) {
             return (
-                <div key={i} className={icls.elem(blockName, 'list-item')}
+                <div key={i} className={ibem.elem(blockName, 'list-item')}
                         onClick={that.selectHandler.bind(that, item.value)}>
                     {item.text}
                 </div>

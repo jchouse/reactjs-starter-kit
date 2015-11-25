@@ -1,5 +1,5 @@
 import React from 'react';
-import icls from 'blocks/i/icls/icls.jsx';
+import ibem from 'blocks/i/ibem/ibem.jsx';
 
 const blockName = 'input';
 /**
@@ -68,7 +68,7 @@ class Input extends React.Component {
         var {required} = this.props,
             {error} = this.state,
             props = {
-                className: icls.elem(blockName, 'input'),
+                className: ibem.elem(blockName, 'input'),
                 name: this.props.name,
                 type: this.props.type || 'text',
                 disabled: this.props.disabled,
@@ -78,11 +78,11 @@ class Input extends React.Component {
             cls = blockName;
 
         if (required) {
-            cls = [cls, icls.mod(blockName, 'required')].join(' ');
+            cls = [cls, ibem.mod(blockName, 'required')].join(' ');
         }
 
         if (error) {
-            cls = [cls, icls.mod(blockName, 'error')].join(' ');
+            cls = [cls, ibem.mod(blockName, 'error')].join(' ');
         }
 
         console.log(this);
@@ -92,7 +92,7 @@ class Input extends React.Component {
                 <input
                     {...props}
                     onChange={this.changeHandler.bind(this)}/>
-                <div className={icls.elem(blockName, 'error')}>
+                <div className={ibem.elem(blockName, 'error')}>
                     {error}
                 </div>
             </div>

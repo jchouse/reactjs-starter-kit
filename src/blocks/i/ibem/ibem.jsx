@@ -1,6 +1,6 @@
 import React from 'react';
 
-class icls extends React.Component {
+class ibem extends React.Component {
     /**
      * Make cls for block with elem and mod
      *
@@ -49,4 +49,4 @@ class icls extends React.Component {
     render () {}
 }
 
-export default icls;
+export default ibem;

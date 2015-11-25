@@ -1,12 +1,12 @@
 jest.dontMock('../Select.jsx');
-jest.dontMock('blocks/i/icls/icls.jsx');
+jest.dontMock('blocks/i/ibem/ibem.jsx');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 const Select = require('../Select.jsx');
-const icls = require('blocks/i/icls/icls.jsx');
+const ibem = require('blocks/i/ibem/ibem.jsx');
 
 describe('Input', () => {
     var options = [

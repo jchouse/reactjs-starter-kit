@@ -1,16 +1,16 @@
-jest.dontMock('../icls.jsx');
+jest.dontMock('../ibem.jsx');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const icls = require('blocks/i/icls/icls.jsx');
+const ibem = require('blocks/i/ibem/ibem.jsx');
 
-describe('icls', () => {
+describe('ibem', () => {
     it('block name', () => {
         var block = 'name',
             className;
 
-        className = icls.cls(block);
+        className = ibem.cls(block);
 
         expect(className).toEqual(block);
     });
@@ -20,7 +20,7 @@ describe('icls', () => {
             elem = 'elemName',
             className;
 
-        className = icls.cls(block, elem);
+        className = ibem.cls(block, elem);
 
         expect(className).toEqual(block + '__' + elem);
     });
@@ -31,7 +31,7 @@ describe('icls', () => {
             mod = 'boolie',
             className;
 
-        className = icls.cls(block, elem, mod);
+        className = ibem.cls(block, elem, mod);
 
         expect(className).toEqual(block + ' ' + block + '--' + mod);
     });
@@ -42,7 +42,7 @@ describe('icls', () => {
             mod = ['boolie', 'boolie2'],
             className;
 
-        className = icls.cls(block, elem, mod);
+        className = ibem.cls(block, elem, mod);
 
         expect(className).toEqual(block + ' ' + block + '--' + mod[0] + ' ' + block + '--' + mod[1]);
     });
@@ -54,7 +54,7 @@ describe('icls', () => {
             elemName = block + '__' + elem,
             className;
 
-        className = icls.cls(block, elem, mod);
+        className = ibem.cls(block, elem, mod);
 
         expect(className).toEqual(elemName + ' ' + elemName + '--' + mod);
     });
@@ -66,7 +66,7 @@ describe('icls', () => {
             elemName = block + '__' + elem,
             className;
 
-        className = icls.cls(block, elem, mod);
+        className = ibem.cls(block, elem, mod);
 
         expect(className).toEqual(elemName + ' ' + elemName + '--' + mod[0] + ' ' + elemName + '--' + mod[1]);
     });
@@ -76,7 +76,7 @@ describe('icls', () => {
             elem = 'elem',
             className;
 
-        className = icls.elem(block, elem);
+        className = ibem.elem(block, elem);
 
         expect(className).toEqual(block + '__' + elem);
     });
@@ -86,16 +86,16 @@ describe('icls', () => {
             mod = 'elem',
             className;
 
-        className = icls.mod(str, mod);
+        className = ibem.mod(str, mod);
 
         expect(className).toEqual(str + '--' + mod);
     });
 
     it('no DOM elem', () => {
-        var icls = TestUtils.renderIntoDocument(
-            <icls/>
+        var ibem = TestUtils.renderIntoDocument(
+            <ibem/>
         );
-        var loginDomNode = ReactDOM.findDOMNode(icls);
+        var loginDomNode = ReactDOM.findDOMNode(ibem);
 
         expect(loginDomNode.nodeElem).toBeUndefined();
     });
