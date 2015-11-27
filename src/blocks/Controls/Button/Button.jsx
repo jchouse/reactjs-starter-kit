@@ -11,7 +11,8 @@ const blockName = 'button';
  * @property {String}  [name]               - array of additionals element
  * @property {String}  [option='default']   - options [default]|reject
  * @property {String}  [mixCls]             - css classes for mix
- * @property {Array}   [children]     - array of additionals element, placement befor text
+ * @property {Array}   [children]           - array of additionals element,
+ *                                              placement befor text
  * @property {Boolean} [disabled=false]     - array of additionals element
  *
  * @property {function} [clickHandler]      - on click callback function

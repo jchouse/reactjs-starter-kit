@@ -1,7 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, Link, IndexRoute } from 'react-router';
-import { IntlProvider } from 'react-intl';
+import {render} from 'react-dom';
+import {Router, Route, Link, IndexRoute} from 'react-router';
+import {IntlProvider} from 'react-intl';
 
 import cookie from 'react-cookie';
 import createBrowserHistory from 'history/lib/createBrowserHistory';

@@ -18,7 +18,7 @@ class Registration extends React.Component {
         }
     }
 
-    render() {
+    render () {
         var content,
             rowCls = ibem.cls(blockName, 'row');
 
