@@ -8,7 +8,6 @@
 * [XHR/Ajax](https://www.npmjs.com/package/portals)
 * [i18n](http://formatjs.io/react/#formatted-message)
 * [cookie](https://www.npmjs.com/package/react-cookie)
-* [mixin](https://github.com/brigand/react-mixin)
 
 ### How to use ###
 * checkout project
