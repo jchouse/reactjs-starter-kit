@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const ibem = require('blocks/i/ibem/ibem.jsx');
+const ibem = require('blocks/i/ibem/ibem.jsx').default;
 
 describe('ibem', () => {
     it('block name', () => {

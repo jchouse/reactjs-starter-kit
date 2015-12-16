@@ -28,10 +28,10 @@ module.exports = function (grunt) {
         browserify: {
             dev: {
                 options: {
-                    transform: ['babelify', require('grunt-react').browserify],
-                    browserifyOptions: {
-
-                    }
+                    transform: [
+                        ['babelify', {presets: ['react', 'es2015']}],
+                        require('grunt-react').browserify
+                    ]
                 },
                 files: {
                     'build/scripts/index.js': ['src/blocks/**/*.jsx']
@@ -43,7 +43,9 @@ module.exports = function (grunt) {
                 src: ['src/blocks/**/*.jsx'],
                 dest: 'build/scripts/index.js',
                 options: {
-                    transform: ['babelify', require('grunt-react').browserify],
+                    transform: [
+                        ['babelify', {presets: ['react', 'es2015']}],
+                        require('grunt-react').browserify],
                     watch: true,
                     keepAlive: true
                 }
@@ -54,7 +56,9 @@ module.exports = function (grunt) {
                 src: ['src/blocks/**/*.jsx'],
                 dest: 'build/scripts/index.js',
                 options: {
-                    transform: ['babelify', require('grunt-react').browserify],
+                    transform: [
+                        ['babelify', {presets: ['react', 'es2015']}],
+                        require('grunt-react').browserify],
                     watch: true
                 }
             }
@@ -81,13 +85,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-jest');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-csscomb');
 
     grunt.registerTask('default', ['exec:set_config_dev', 'exec:set_path', 'concat:less', 'less:dev', 'browserify:dev', 'exec:copy_static_content']);
     grunt.registerTask('qa', ['exec:set_config_qa', 'exec:set_path', 'concat:less', 'less:dev', 'browserify:dev', 'exec:copy_static_content']);
-    grunt.registerTask('wwb', ['exec:set_config_dev', 'exec:set_path', 'browserify:watchClient', 'watch:less', 'exec:copy_static_content']);
+    grunt.registerTask('wwb', ['exec:set_config_dev', 'exec:set_path', 'exec:copy_static_content', 'browserify:watchClient', 'watch:less']);
     grunt.registerTask('formatLess', 'Sorting CSS properties in specific order.', formatLess);
 
 

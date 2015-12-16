@@ -5,8 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Button = require('../Button.jsx');
-const ibem = require('blocks/i/ibem/ibem.jsx');
+const Button = require('../Button.jsx').default;
+const ibem = require('blocks/i/ibem/ibem.jsx').default;
 
 describe('Button', () => {
     const text = 'testText',

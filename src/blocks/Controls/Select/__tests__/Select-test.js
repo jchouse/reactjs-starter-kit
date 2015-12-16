@@ -5,8 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Select = require('../Select.jsx');
-const ibem = require('blocks/i/ibem/ibem.jsx');
+const Select = require('../Select.jsx').default;
+const ibem = require('blocks/i/ibem/ibem.jsx').default;
 
 describe('Input', () => {
     var options = [

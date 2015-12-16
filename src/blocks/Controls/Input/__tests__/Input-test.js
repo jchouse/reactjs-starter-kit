@@ -5,8 +5,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Input = require('../Input.jsx');
-const ibem = require('blocks/i/ibem/ibem.jsx');
+const Input = require('../Input.jsx').default;
+const ibem = require('blocks/i/ibem/ibem.jsx').default;
 
 describe('Input', () => {
     it('check default render', () => {
