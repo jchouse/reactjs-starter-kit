@@ -5,9 +5,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Hello = require('../Hello.jsx').default;
+const {Hello} = require('../Hello.jsx');
 const {FormattedMessage} = require('react-intl-es6');
-const ibem = require('blocks/i/ibem/ibem.jsx').default;
+const ibem = require('blocks/i/ibem/ibem.jsx');
 
 const blockName = 'hellow-world';
 

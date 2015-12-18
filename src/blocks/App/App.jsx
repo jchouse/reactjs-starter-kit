@@ -5,7 +5,7 @@ import {Intl} from 'react-intl-es6';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import iconfig from 'blocks/i/iconfig/iconfig';
 
-import Hello from 'blocks/Hello/Hello.jsx';
+import {Hello} from 'blocks/Hello/Hello.jsx';
 
 class App extends Intl {
     constructor () {

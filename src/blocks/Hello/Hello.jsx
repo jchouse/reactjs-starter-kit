@@ -5,7 +5,7 @@ import ibem from 'blocks/i/ibem/ibem.jsx';
 
 const blockName = 'hellow-world';
 
-class Header extends React.Component {
+export class Hello extends React.Component {
     render () {
         return (
             <div className={blockName}>
@@ -18,5 +18,3 @@ class Header extends React.Component {
         );
     }
 }
-
-export default Header;

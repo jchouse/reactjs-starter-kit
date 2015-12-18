@@ -93,6 +93,11 @@ module.exports = function (grunt) {
     grunt.registerTask('wwb', ['exec:set_config_dev', 'exec:set_path', 'exec:copy_static_content', 'browserify:watchClient', 'watch:less']);
     grunt.registerTask('formatLess', 'Sorting CSS properties in specific order.', formatLess);
 
+    // For run jest on Codeship
+    grunt.registerTask('jest', 'Run tests with Jest.', function() {
+        require('jest-cli').runCLI(this.options(), process.cwd(), this.async());
+    });
+
 
     function formatLess() {
         var fs = require('fs');
