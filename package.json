@@ -28,7 +28,9 @@
         "grunt-browserify": "4.0.1",
         "grunt-contrib-concat": "0.5.1",
         "grunt-contrib-less": "1.0.1",
-        "grunt-contrib-watch": "0.6.1"
+        "grunt-contrib-watch": "0.6.1",
+        "jquery": "2.1.1",
+        "materialize-css": "0.97.4"
     },
     "scripts": {
         "test": "jest"

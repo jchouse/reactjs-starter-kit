@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         },
         concat: {
             less: {
-                src: ['src/blocks/**/*.less'],
+                src: ['node_modules/materialize-css/bin/materialize.css', 'src/blocks/**/*.less'],
                 dest: 'build/index.less'
             }
         },
@@ -76,7 +76,8 @@ module.exports = function (grunt) {
                 'ln -sf ' + __dirname + '/git-hooks/pre-push.sh .git/hooks/pre-push'
             },
             copy_static_content: {
-                cmd: 'cp -R src/static/. build/;'
+                cmd: 'cp -R src/static/. build/; ' +
+                    'cp -R ./node_modules/materialize-css/bin/materialize.js build/scripts/materialize.js'
             }
         }
     });
