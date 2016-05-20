@@ -25,7 +25,7 @@ class bem {
      *
      * @return {string} the css classname
      */
-    cls () {
+    cls (mixCls) {
         var that = this,
             {bn, _elemStr, _modsStr} = this,
             str = bn;
@@ -51,6 +51,10 @@ class bem {
 
         this._elemStr = null;
         this._modsStr = null;
+
+        if (mixCls) {
+            str = [mixCls, str].join(' ');
+        }
 
         return str;
     }
