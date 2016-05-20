@@ -2,23 +2,35 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl-es6';
 
 import Button from 'blocks/Controls/Button/Button.jsx';
+import ibem from 'blocks/i/BEM/BEM';
 
-import ibem from 'blocks/i/ibem/ibem.jsx';
+class Hello extends React.Component {
+    constructor (props) {
+        super(props);
+    }
 
-const blockName = 'hellow-world';
-
-export class Hello extends React.Component {
     render () {
+        var {bem} = this.props;
+
         return (
-            <div className={blockName}>
-                <div className={ibem.cls(blockName, 'content')}>
+            <div className={bem.cls()}>
+                <div className={bem.elem('content').cls()}>
                     <FormattedMessage
                         id='Hello.world'
                         message='Hello world'/>
-
-                    <Button>BUTTON</Button>
+                    <Button>
+                        <FormattedMessage
+                            id='Hello.button'
+                            message='BUTTON'/>
+                    </Button>
                 </div>
             </div>
         );
     }
 }
+
+Hello.defaultProps = {
+    bem: new ibem('hellow-world')
+};
+
+export default Hello;

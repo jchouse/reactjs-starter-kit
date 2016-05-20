@@ -1,5 +1,5 @@
 ### deps ###
-[nodejs v4.2.1 with npm](https://nodejs.org/en/download/)
+[nodejs v4.2.1 with npm ^v3.9.0](https://nodejs.org/en/download/)
 
 `npm grunt-cli -g`  
 

@@ -1,20 +1,18 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, Route, IndexRoute} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Intl} from 'react-intl-es6';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-import iconfig from 'blocks/i/iconfig/iconfig';
 
-import {Hello} from 'blocks/Hello/Hello.jsx';
+import Hello from 'blocks/Hello/Hello.jsx';
 
 class App extends Intl {
     constructor () {
-        super (iconfig.intlData.locales, iconfig.intlData.messages);
+        super (intlData.locales, intlData.messages);
     }
 
     render () {
         return (
-            <div>
+            <div className='content'>
                 {this.props.children}
             </div>
         );
@@ -29,7 +27,7 @@ class NotFound extends React.Component {
 }
 
 render (
-    <Router history={createBrowserHistory()}>
+    <Router history={browserHistory}>
         <Route path='/' component={App}>
             <IndexRoute component={Hello} />
         </Route>

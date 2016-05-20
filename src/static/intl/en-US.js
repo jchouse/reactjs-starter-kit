@@ -1,0 +1,1 @@
+var intlData =  {"locales":["en-US"],"messages":{"Hello":{"world":"Hello world","button":"button"}}};

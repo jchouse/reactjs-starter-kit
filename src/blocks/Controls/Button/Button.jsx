@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ibem from 'blocks/i/ibem/ibem.jsx';
 
-const blockName = 'btn';
+import ibem from 'blocks/i/BEM/BEM';
 
 /**
  * Button
@@ -25,8 +23,8 @@ class Button extends React.Component {
     }
 
     render () {
-        var {mixCls, children, option: option = 'default'} = this.props,
-            cls = [blockName, ibem.mod(blockName, option), 'waves-effect', 'waves-light'].join(' '),
+        var {mixCls, children, option: option = 'default', bem} = this.props,
+            cls = [bem.mods(option).cls(), 'waves-effect', 'waves-light'].join(' '),
             attributes = {
                 disabled: this.props.disabled,
                 name: this.props.name
@@ -37,18 +35,22 @@ class Button extends React.Component {
         }
 
         if (attributes.disabled) {
-            cls = [cls, ibem.mod(blockName, 'disabled')].join(' ');
+            cls = [cls, bem.mods('disabled').cls()].join(' ');
         }
 
         return (
-            <div className={ibem.cls(blockName, 'wrapper')}>
+            <div className={bem.elem('wrapper').cls()}>
                 <button {...attributes} className={cls}
-                    onClick={this.clickHandler.bind(this)}>
+                    onClick={::this.clickHandler}>
                     {children}
                 </button>
             </div>
         );
     }
+}
+
+Button.defaultProps = {
+    bem: new ibem('btn')
 }
 
 Button.propTypes = {

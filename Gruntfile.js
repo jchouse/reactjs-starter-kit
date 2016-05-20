@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (grunt) {
 
     grunt.initConfig({
@@ -63,6 +65,35 @@ module.exports = function (grunt) {
                 }
             }
         },
+        copy: {
+            staticContent: {
+                files: [
+                    // Static
+                    {
+                        expand: true,
+                        cwd: 'src/static',
+                        src: ['**'],
+                        dest: 'build/'
+                    },
+                    // Materialize
+                    {
+                        expand: true,
+                        cwd: 'node_modules/materialize-css/bin/',
+                        src: ['materialize.js'],
+                        dest: 'build/scripts/'
+                    },
+                    // cp -R ./node_modules/materialize-css/bin/materialize.js build/scripts/materialize.js
+                    // Images
+                    {
+                        src: ['src/**/img/*'],
+                        dest: 'build/img/',
+                        filter: 'isFile',
+                        expand: true,
+                        flatten: true
+                    }
+                ]
+            }
+        },
         exec: {
             set_config_dev: {
                 cmd: 'ln -nsf ' + __dirname + '/src/config/dev/iconfig.js src/blocks/i/iconfig/'
@@ -71,13 +102,7 @@ module.exports = function (grunt) {
                 cmd: 'ln -nsf ' + __dirname + '/src/config/qa/iconfig.js src/blocks/i/iconfig/'
             },
             set_path: {
-                cmd: 'ln -nsf ' + __dirname + '/src/blocks node_modules;' +
-                'ln -sf ' + __dirname + '/git-hooks/pre-commit.sh .git/hooks/pre-commit;' +
-                'ln -sf ' + __dirname + '/git-hooks/pre-push.sh .git/hooks/pre-push'
-            },
-            copy_static_content: {
-                cmd: 'cp -R src/static/. build/; ' +
-                    'cp -R ./node_modules/materialize-css/bin/materialize.js build/scripts/materialize.js'
+                cmd: 'ln -nsf ' + __dirname + '/src/blocks node_modules;'
             }
         }
     });
@@ -86,43 +111,70 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-exec');
-    grunt.loadNpmTasks('grunt-csscomb');
 
-    grunt.registerTask('default', ['exec:set_config_dev', 'exec:set_path', 'concat:less', 'less:dev', 'browserify:dev', 'exec:copy_static_content']);
-    grunt.registerTask('qa', ['exec:set_config_qa', 'exec:set_path', 'concat:less', 'less:dev', 'browserify:dev', 'exec:copy_static_content']);
-    grunt.registerTask('wwb', ['exec:set_config_dev', 'exec:set_path', 'exec:copy_static_content', 'browserify:watchClient', 'watch:less']);
-    grunt.registerTask('formatLess', 'Sorting CSS properties in specific order.', formatLess);
+    grunt.registerTask('collectIntlMessages', 'Collect intl messages from components.', collectI18nMessages);
 
-    // For run jest on Codeship
-    grunt.registerTask('jest', 'Run tests with Jest.', function() {
-        require('jest-cli').runCLI(this.options(), process.cwd(), this.async());
-    });
+    grunt.registerTask('default', ['collectIntlMessages', 'exec:set_config_dev', 'exec:set_path', 'concat:less', 'less:dev', 'browserify:dev', 'copy:staticContent']);
+    grunt.registerTask('qa', ['collectIntlMessages', 'exec:set_config_qa', 'exec:set_path', 'concat:less', 'less:dev', 'browserify:dev', 'copy:staticContent']);
+    grunt.registerTask('wwb', ['collectIntlMessages', 'exec:set_config_dev', 'exec:set_path', 'copy:staticContent', 'browserify:watchClient', 'watch:less']);
 
+    // by @dmitropustovit
+    function collectI18nMessages () {
+        var files = [],
+            messages = {};
+        getFiles('./src', 'i18n', files);
 
-    function formatLess() {
-        var fs = require('fs');
-        var res = [];
-        getFiles('./src', 'less', res);
-
-        var lessFiles = {};
-        res.forEach(function (lessFile) {
-            lessFiles[lessFile] = [lessFile];
+        files.forEach(function (intlFile) {
+            var intl = require(intlFile);
+            for (var locale in intl) {
+                if (!intl.hasOwnProperty(locale)) {
+                    continue;
+                }
+                if (messages[locale]) {
+                    Object.assign(messages[locale], intl[locale]);
+                } else {
+                    messages[locale] = intl[locale];
+                }
+            }
         });
 
-        grunt.config.set('csscomb.default.files', lessFiles);
-        grunt.config.set('csscomb.options.config', 'node_modules/grunt-csscomb/node_modules/csscomb/config/yandex.json');
-        grunt.task.run('csscomb');
+        var fs = require('fs');
 
-        function getFiles(src, def, res) {
-            fs.readdirSync(src).forEach(function (fileName) {
-                if (fileName.indexOf('.') == -1) {
-                    getFiles(src + '/' + fileName, def, res);
-                } else if (fileName.indexOf('.less') != -1) {
-                    res.push(src + '/' + fileName);
-                }
-            });
-
+        try {
+            fs.mkdirSync('./src/static/intl');
+        } catch (e) {
+            if (e.code != 'EEXIST') {
+                throw e;
+            }
         }
+
+        for (var locale in messages) {
+            if (!messages.hasOwnProperty(locale)) {
+                continue;
+            }
+            var res = {
+                locales: [locale],
+                messages: messages[locale]
+            };
+            fs.writeFileSync('./src/static/intl/' + locale + '.js',
+                'var intlData =  ' + JSON.stringify(res) + ';');
+        }
+    }
+
+    function getFiles (src, def, res) {
+        var fs = require('fs'),
+            path = require('path');
+
+        fs.readdirSync(src).forEach(function (fileName) {
+            let file = path.resolve(src, fileName);
+
+            if (fs.lstatSync(file).isDirectory()) {
+                getFiles(src + '/' + fileName, def, res);
+            } else if (fileName.indexOf(def) != -1) {
+                res.push(src + '/' + fileName);
+            }
+        });
     }
 };
