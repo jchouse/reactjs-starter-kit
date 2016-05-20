@@ -5,3 +5,4 @@ build/
 coverage
 .idea
 src/blocks/i/iconfig/iconfig.js
+src/static/intl/*

@@ -82,7 +82,13 @@ module.exports = function (grunt) {
                         src: ['materialize.js'],
                         dest: 'build/scripts/'
                     },
-                    // cp -R ./node_modules/materialize-css/bin/materialize.js build/scripts/materialize.js
+                    // Fonts
+                    {
+                        expand: true,
+                        cwd: 'node_modules/materialize-css/font/',
+                        src: ['**'],
+                        dest: 'build/font/'
+                    },
                     // Images
                     {
                         src: ['src/**/img/*'],
